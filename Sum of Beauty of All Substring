@@ -1,0 +1,27 @@
+Explanation:
+Outer Loop:
+
+The outer loop iterates through all starting indices i of the substrings in the input string s.
+Inner Loop:
+
+The inner loop iterates through all ending indices j for each starting index i.
+For each character in the substring s[i...j], its frequency is incremented in the frequency array freq.
+Finding Most Frequent and Least Frequent Values:
+
+The mostval variable tracks the maximum frequency of any character in the current substring.
+The leastval variable tracks the minimum frequency of any character that appears at least once.
+Beauty Calculation:
+
+The beauty of a substring is defined as the difference between the most frequent and least frequent character counts.
+If mostval > leastval, the difference is added to the total beauty sum ans.
+Return Value:
+
+After iterating through all substrings, the total beauty sum ans is returned.
+Time Complexity:
+Outer loop runs O(n) times.
+Inner loop runs up to O(n) times for each iteration of the outer loop.
+Calculating the leastval in the inner loop takes O(26) (constant).
+Overall complexity: O(n²).
+Space Complexity:
+Frequency array freq uses O(26) space for each substring.
+Total space complexity: O(1) (constant space, as freq is reused).
