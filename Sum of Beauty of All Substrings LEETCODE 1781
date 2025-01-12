@@ -1,0 +1,36 @@
+class Solution {
+public:
+    // Function to calculate the beauty sum of all substrings
+    int beautySum(string s) {
+        int ans = 0; // Variable to store the total beauty sum
+        int n = s.size(); // Length of the string
+
+        // Outer loop to determine the starting point of substrings
+        for (int i = 0; i < n; i++) {
+            vector<int> freq(26, 0); // Frequency array to count occurrences of each character
+            int mostval = 0; // Variable to track the highest frequency in the current substring
+            
+            // Inner loop to determine the ending point of substrings
+            for (int j = i; j < n; j++) {
+                freq[s[j] - 'a']++; // Increment frequency of the current character
+                mostval = max(mostval, freq[s[j] - 'a']); // Update the highest frequency
+                
+                int leastval = INT_MAX; // Reset the least frequency for each substring
+                
+                // Find the smallest frequency greater than 0
+                for (int k = 0; k < 26; k++) {
+                    if (freq[k] > 0) {
+                        leastval = min(leastval, freq[k]);
+                    }
+                }
+                
+                // Add the difference to the beauty sum if it's greater than 0
+                if (mostval > leastval) {
+                    ans += mostval - leastval;
+                }
+            }
+        }
+        
+        return ans; // Return the total beauty sum
+    }
+};
